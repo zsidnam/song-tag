@@ -1,0 +1,36 @@
+body {
+    margin: 0px;
+    width: 100%;
+}
+
+header {
+    height: 20px;
+    background-color: rgb(12, 206, 148);
+}
+
+nav {
+    height: 40px;
+    background-color: rgb(194, 194, 194);
+}
+
+#main-content {
+    min-height: 900px;
+    display: flex;
+
+    section {
+        flex-grow: 3;
+        background-color: white;
+    }
+
+    aside {
+        flex-grow: 1;
+        background-color: rgb(92, 92, 92);
+    }
+}
+
+footer {
+    height: 60px;
+    background-color: black;
+}
+
+
