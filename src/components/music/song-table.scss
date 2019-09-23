@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        tr {
+            background-color: aquamarine;
+
+            th {
+                text-align: left;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            cursor: pointer;
+
+            &:nth-child(odd) {
+                background-color: white;
+            }
+
+            &:nth-child(even) {
+                background-color: aquamarine;
+            }
+
+            td {
+                height: 25px;
+            }
+        }
+    }
+}
