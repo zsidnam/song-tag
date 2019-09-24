@@ -5,11 +5,16 @@ const Song = props => {
     const { song } = props;
 
     const onClick = () => {
-        alert('I wish I could play this...');
+        console.log('selected');
+    };
+
+    const handleDoubleClick = () => {
+        // TODO: Suppress the single click here
+        console.log('played');
     };
 
     return (
-        <tr onClick={onClick}>
+        <tr onDoubleClick={handleDoubleClick} onClick={onClick}>
             <td>{song.title}</td>
             <td>{song.artist}</td>
             <td>{song.genre}</td>
