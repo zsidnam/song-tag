@@ -1,0 +1,67 @@
+{
+    "songs": [
+        {
+            "id": "1",
+            "title": "Manhattan",
+            "artist": "Kings of Leon",
+            "album": "Only By The Night",
+            "genre": "Rock",
+            "time": "3:24",
+            "src": "songs/manhattan.m4a"
+        },
+        {
+            "id": "2",
+            "title": "The City",
+            "artist": "The 1975",
+            "album": "The 1975",
+            "genre": "Alternative",
+            "time": "3:27",
+            "src": "songs/the_city.mp3"
+        },
+        {
+            "id": "3",
+            "title": "Robbers",
+            "artist": "The 1975",
+            "album": "The 1975",
+            "genre": "Alternative",
+            "time": "4:14",
+            "src": "songs/robbers.mp3"
+        },
+        {
+            "id": "4",
+            "title": "Pressure",
+            "artist": "The 1975",
+            "album": "The 1975",
+            "genre": "Alternative",
+            "time": "3:41",
+            "src": "songs/pressure.mp3"
+        },
+        {
+            "id": "5",
+            "title": "Babygirl",
+            "artist": "Anthony Green",
+            "album": "Avalon",
+            "genre": "Alternative",
+            "time": "3:29",
+            "src": "songs/babygirl.m4a"
+        },
+        {
+            "id": "6",
+            "title": "Apartment",
+            "artist": "Young the Giant",
+            "album": "Young the Giant",
+            "genre": "Alternative Rock",
+            "time": "3:56",
+            "src": "songs/apartment.mp3"
+        },
+        {
+            "id": "7",
+            "title": "Parachutes",
+            "artist": "Coldplay",
+            "album": "Parachutes",
+            "genre": "Pop",
+            "time": "0:46",
+            "src": "songs/parachutes.mp3"
+        }
+    ]
+}

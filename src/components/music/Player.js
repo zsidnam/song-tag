@@ -1,39 +1,59 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import { play, pause } from '../../store/actions/player-actions';
+
 class Player extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            audioSrc: '',
-            isPlaying: false
-        };
-
-        // TODO: Use redux store for values
 
         this.audioRef = React.createRef();
-        this.handlePlayPause = this.handlePlayPause.bind(this);
+        this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
     }
 
-    handlePlayPause() {
-        if (!this.audioRef.current || !this.state.audioSrc) {
+    // convert this to hook
+    componentDidUpdate(prevProps) {
+        if (
+            this.props.isPlaying !== prevProps.isPlaying ||
+            this.props.currentSong !== prevProps.currentSong
+        ) {
+            this._handlePlayUpdate();
+        }
+    }
+
+    _handlePlayUpdate() {
+        // TODO: handle restarting song when double clicked
+        if (this.props.isPlaying) {
+            this.audioRef.current.play();
+        } else {
+            this.audioRef.current.pause();
+        }
+    }
+
+    handlePlayPauseClick() {
+        if (!this.audioRef.current || !this._getAudioSrc()) {
+            console.log('cannot play/pause; no audio source');
             return;
         }
 
-        if (!this.state.isPlaying) {
-            this.audioRef.current.play();
-            this.setState({ isPlaying: true });
+        if (!this.props.isPlaying) {
+            this.props.dispatch(play());
         } else {
-            this.audioRef.current.pause();
-            this.setState({ isPlaying: false });
+            this.props.dispatch(pause());
         }
+    }
+
+    _getAudioSrc() {
+        return (this.props.currentSong && this.props.currentSong.src) || '';
     }
 
     render() {
         return (
             <Fragment>
-                <audio ref={this.audioRef} src={this.state.audioSrc} />
-                <button onClick={this.handlePlayPause}>Play me</button>
+                <audio ref={this.audioRef} src={this._getAudioSrc()} />
+                <button onClick={this.handlePlayPauseClick}>
+                    {this.props.isPlaying ? 'Pause' : 'Play'}
+                </button>
             </Fragment>
         );
     }

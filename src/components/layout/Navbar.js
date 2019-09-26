@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = (props) => {
+const Navbar = props => {
     return (
         <nav>
-            Test
+            <Link to={'/'}>Home</Link>
+            <Link to={'/library'}>Library</Link>
         </nav>
     );
 };

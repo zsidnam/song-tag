@@ -13,6 +13,8 @@
 
 # misc
 *.mp3
+*.m4a
+.vscode
 .DS_Store
 .env.local
 .env.development.local
