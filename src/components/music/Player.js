@@ -1,14 +1,22 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import { play, pause } from '../../store/actions/player-actions';
+
+import '../../styles/player.scss';
 
 class Player extends React.Component {
     constructor(props) {
         super(props);
 
+        //TODO: move to redux
+        this.state = {
+            loopEnabled: false
+        };
+
         this.audioRef = React.createRef();
-        this.handlePlayPauseClick = this.handlePlayPauseClick.bind(this);
+        this.handlePlayToggle = this.handlePlayToggle.bind(this);
+        this.handleLoopToggle = this.handleLoopToggle.bind(this);
     }
 
     // convert this to hook
@@ -30,7 +38,13 @@ class Player extends React.Component {
         }
     }
 
-    handlePlayPauseClick() {
+    _handleControllerPlay() {
+        if (!this.props.isPlaying) {
+            this.props.dispatch(play());
+        }
+    }
+
+    handlePlayToggle() {
         if (!this.audioRef.current || !this._getAudioSrc()) {
             console.log('cannot play/pause; no audio source');
             return;
@@ -43,18 +57,42 @@ class Player extends React.Component {
         }
     }
 
+    handleLoopToggle() {
+        if (!this.state.loopEnabled) {
+            this.setState({ loopEnabled: true });
+        } else {
+            this.setState({ loopEnabled: false });
+        }
+    }
+
     _getAudioSrc() {
         return (this.props.currentSong && this.props.currentSong.src) || '';
     }
 
     render() {
         return (
-            <Fragment>
-                <audio ref={this.audioRef} src={this._getAudioSrc()} />
-                <button onClick={this.handlePlayPauseClick}>
-                    {this.props.isPlaying ? 'Pause' : 'Play'}
+            <div id={'player-container'}>
+                <audio
+                    ref={this.audioRef}
+                    src={this._getAudioSrc()}
+                    loop={this.state.loopEnabled}
+                    onPause={() => {
+                        console.log('paused');
+                    }}
+                    onPlay={() => {
+                        console.log('played');
+                    }}
+                    onEnded={() => {
+                        console.log('song ended');
+                    }}
+                />
+                <button onClick={this.handlePlayToggle}>
+                    {this.props.isPlaying ? '||' : '|>'}
                 </button>
-            </Fragment>
+                <button onClick={this.handleLoopToggle}>
+                    {this.state.loopEnabled ? 'Loop on' : 'Loop off'}
+                </button>
+            </div>
         );
     }
 }

@@ -1,0 +1,10 @@
+@import './constants.scss';
+
+div#library-showcase {
+    background-color: $darkGray;
+    color: $white;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Song from './Song';
-import './song-table.scss';
+import '../../styles/song-table.scss';
 
 const SongTable = props => {
     return (

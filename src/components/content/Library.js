@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import SongTable from '../music/SongTable';
-import Player from '../music/Player';
+
+import '../../styles/library.scss';
 
 class Library extends React.Component {
     constructor(props) {
@@ -23,11 +24,11 @@ class Library extends React.Component {
     render() {
         return (
             <Fragment>
+                <div id={'library-showcase'}>Some content goes here</div>
                 <SongTable
                     songs={this.state.songs}
                     dispatch={this.props.dispatch}
                 />
-                <Player />
             </Fragment>
         );
     }

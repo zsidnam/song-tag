@@ -1,0 +1,23 @@
+@import './constants.scss';
+
+body {
+    background-color: $black;
+    margin: 0px;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+}
+
+#main-content {
+    min-height: 700px;
+    display: flex;
+
+    section {
+        flex: 3;
+    }
+
+    aside {
+        flex: 1;
+        background-color: $lightGray;
+    }
+}

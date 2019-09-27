@@ -1,12 +1,17 @@
+@import './constants.scss';
+
 table {
     width: 100%;
     border-collapse: collapse;
+    color: $white;
 
     thead {
         tr {
-            background-color: aquamarine;
+            background-color: $black;
 
             th {
+                height: 40px;
+                text-transform: uppercase;
                 text-align: left;
             }
         }
@@ -17,15 +22,15 @@ table {
             cursor: pointer;
 
             &:nth-child(odd) {
-                background-color: white;
+                background-color: $darkGray;
             }
 
             &:nth-child(even) {
-                background-color: aquamarine;
+                background-color: $black;
             }
 
             td {
-                height: 25px;
+                height: 30px;
             }
         }
     }
