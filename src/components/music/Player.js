@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { play, pause } from '../../store/actions/player-actions';
+import {
+    togglePlayPause,
+    changeVolume,
+    toggleLoop
+} from '../../store/actions/player-actions';
+import Controls from '../music/Controls';
 
 import '../../styles/player.scss';
 
@@ -9,17 +14,17 @@ class Player extends React.Component {
     constructor(props) {
         super(props);
 
-        //TODO: move to redux
-        this.state = {
-            loopEnabled: false
-        };
-
         this.audioRef = React.createRef();
+
         this.handlePlayToggle = this.handlePlayToggle.bind(this);
         this.handleLoopToggle = this.handleLoopToggle.bind(this);
+        this.handleVolumeChange = this.handleVolumeChange.bind(this);
     }
 
-    // convert this to hook
+    componentDidMount() {
+        this._init();
+    }
+
     componentDidUpdate(prevProps) {
         if (
             this.props.isPlaying !== prevProps.isPlaying ||
@@ -27,6 +32,19 @@ class Player extends React.Component {
         ) {
             this._handlePlayUpdate();
         }
+
+        if (this.props.volume !== prevProps.volume) {
+            this._handleVolumeUpdate();
+        }
+    }
+
+    _init() {
+        if (!this.audioRef.current) {
+            console.log('ERROR! NOT READY TO INITIALIZE!');
+            return;
+        }
+
+        this.audioRef.current.volume = this.props.volume;
     }
 
     _handlePlayUpdate() {
@@ -38,35 +56,29 @@ class Player extends React.Component {
         }
     }
 
-    _handleControllerPlay() {
-        if (!this.props.isPlaying) {
-            this.props.dispatch(play());
-        }
-    }
-
-    handlePlayToggle() {
-        if (!this.audioRef.current || !this._getAudioSrc()) {
-            console.log('cannot play/pause; no audio source');
-            return;
-        }
-
-        if (!this.props.isPlaying) {
-            this.props.dispatch(play());
-        } else {
-            this.props.dispatch(pause());
-        }
-    }
-
-    handleLoopToggle() {
-        if (!this.state.loopEnabled) {
-            this.setState({ loopEnabled: true });
-        } else {
-            this.setState({ loopEnabled: false });
-        }
+    _handleVolumeUpdate() {
+        this.audioRef.current.volume = this.props.volume;
     }
 
     _getAudioSrc() {
         return (this.props.currentSong && this.props.currentSong.src) || '';
+    }
+
+    handlePlayToggle() {
+        if (!this._getAudioSrc()) {
+            console.log('cannot play/pause; no audio source');
+            return;
+        }
+
+        this.props.dispatch(togglePlayPause());
+    }
+
+    handleLoopToggle() {
+        this.props.dispatch(toggleLoop());
+    }
+
+    handleVolumeChange(e) {
+        this.props.dispatch(changeVolume(parseFloat(e.target.value)));
     }
 
     render() {
@@ -75,23 +87,20 @@ class Player extends React.Component {
                 <audio
                     ref={this.audioRef}
                     src={this._getAudioSrc()}
-                    loop={this.state.loopEnabled}
-                    onPause={() => {
-                        console.log('paused');
-                    }}
-                    onPlay={() => {
-                        console.log('played');
-                    }}
+                    loop={this.props.loop}
                     onEnded={() => {
+                        // does not fire if loop is true
                         console.log('song ended');
                     }}
                 />
-                <button onClick={this.handlePlayToggle}>
-                    {this.props.isPlaying ? '||' : '|>'}
-                </button>
-                <button onClick={this.handleLoopToggle}>
-                    {this.state.loopEnabled ? 'Loop on' : 'Loop off'}
-                </button>
+                <Controls
+                    isPlaying={this.props.isPlaying}
+                    volume={this.props.volume}
+                    loop={this.props.loop}
+                    handlePlayToggle={this.handlePlayToggle}
+                    handleVolumeChange={this.handleVolumeChange}
+                    handleLoopToggle={this.handleLoopToggle}
+                />
             </div>
         );
     }
@@ -101,7 +110,9 @@ const mapStateToProps = state => {
     const { player } = state;
     return {
         currentSong: player.currentSong,
-        isPlaying: player.isPlaying
+        isPlaying: player.isPlaying,
+        volume: player.volume,
+        loop: player.loop
     };
 };
 

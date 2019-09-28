@@ -1,4 +1,10 @@
-import { PLAY_NEW_SONG, PLAY, PAUSE } from './action-types';
+import {
+    PLAY_NEW_SONG,
+    SET_CURRENT_SONG,
+    CHANGE_VOLUME,
+    TOGGLE_LOOP,
+    TOGGLE_PLAY_PAUSE
+} from './action-types';
 
 export const playNewSong = newSong => dispatch => {
     dispatch({
@@ -7,14 +13,28 @@ export const playNewSong = newSong => dispatch => {
     });
 };
 
-export const play = () => dispatch => {
+export const setCurrentSong = song => dispatch => {
     dispatch({
-        type: PLAY
+        type: SET_CURRENT_SONG,
+        payload: { song }
     });
 };
 
-export const pause = () => dispatch => {
+export const togglePlayPause = () => dispatch => {
     dispatch({
-        type: PAUSE
+        type: TOGGLE_PLAY_PAUSE
+    });
+};
+
+export const changeVolume = newVolume => dispatch => {
+    dispatch({
+        type: CHANGE_VOLUME,
+        payload: { volume: newVolume }
+    });
+};
+
+export const toggleLoop = () => dispatch => {
+    dispatch({
+        type: TOGGLE_LOOP
     });
 };

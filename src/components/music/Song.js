@@ -5,7 +5,9 @@ import { playNewSong } from '../../store/actions/player-actions';
 
 const Song = props => {
     const { song } = props;
+    const isCurrent = props.isCurrentSong(song.id);
 
+    // TODO: Implement 'selected' status
     const onClick = () => {
         console.log('selected');
     };
@@ -16,7 +18,11 @@ const Song = props => {
     };
 
     return (
-        <tr onDoubleClick={handleDoubleClick} onClick={onClick}>
+        <tr
+            onDoubleClick={handleDoubleClick}
+            onClick={onClick}
+            className={isCurrent ? 'current' : ''}
+        >
             <td>{song.title}</td>
             <td>{song.artist}</td>
             <td>{song.album}</td>
@@ -34,7 +40,8 @@ Song.propTypes = {
         genre: PropTypes.string,
         time: PropTypes.string
     }),
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    isCurrentSong: PropTypes.func
 };
 
 export default Song;

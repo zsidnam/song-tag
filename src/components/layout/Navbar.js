@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import '../../styles/navbar.scss';
 
-const Navbar = props => {
+const Navbar = withRouter(props => {
     return (
         <nav>
-            <Link to={'/'}>Home</Link>
-            <Link to={'/library'}>Library</Link>
+            <NavLink exact to={'/'} activeClassName={'active'}>
+                Home
+            </NavLink>
+            <NavLink exact to={'/library'} activeClassName={'active'}>
+                Library
+            </NavLink>
         </nav>
     );
-};
+});
 
 export default Navbar;

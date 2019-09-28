@@ -1,8 +1,16 @@
-import { PLAY_NEW_SONG, PLAY, PAUSE } from '../actions/action-types';
+import {
+    PLAY_NEW_SONG,
+    SET_CURRENT_SONG,
+    CHANGE_VOLUME,
+    TOGGLE_LOOP,
+    TOGGLE_PLAY_PAUSE
+} from '../actions/action-types';
 
 const initPlayerState = {
     currentSong: null,
-    isPlaying: false
+    isPlaying: false,
+    volume: 0.5,
+    loop: false
 };
 
 const playerReducer = (state = initPlayerState, action) => {
@@ -15,17 +23,31 @@ const playerReducer = (state = initPlayerState, action) => {
             };
         }
 
-        case PLAY: {
+        case SET_CURRENT_SONG: {
             return {
                 ...state,
-                isPlaying: true
+                currentSong: action.payload.song
             };
         }
 
-        case PAUSE: {
+        case TOGGLE_PLAY_PAUSE: {
             return {
                 ...state,
-                isPlaying: false
+                isPlaying: !state.isPlaying
+            };
+        }
+
+        case CHANGE_VOLUME: {
+            return {
+                ...state,
+                volume: action.payload.volume
+            };
+        }
+
+        case TOGGLE_LOOP: {
+            return {
+                ...state,
+                loop: !state.loop
             };
         }
 

@@ -18,7 +18,12 @@ const SongTable = props => {
             </thead>
             <tbody>
                 {props.songs.map(song => (
-                    <Song song={song} key={song.id} dispatch={props.dispatch} />
+                    <Song
+                        song={song}
+                        key={song.id}
+                        dispatch={props.dispatch}
+                        isCurrentSong={props.isCurrentSong}
+                    />
                 ))}
             </tbody>
         </table>
@@ -27,7 +32,8 @@ const SongTable = props => {
 
 SongTable.propTypes = {
     songs: PropTypes.arrayOf(PropTypes.object),
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    isCurrentSong: PropTypes.func
 };
 
 export default SongTable;
