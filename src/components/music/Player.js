@@ -106,6 +106,8 @@ class Player extends React.Component {
     }
 }
 
+// TODO: Set up map actions to props
+
 const mapStateToProps = state => {
     const { player } = state;
     return {

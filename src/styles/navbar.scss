@@ -9,15 +9,14 @@ nav {
     align-items: center;
 
     a {
-        color: $blue;
+        color: $white;
         font-weight: bold;
         text-transform: uppercase;
         text-decoration: underline;
-        text-decoration-color: $blue;
         margin: 0px 15px;
 
         &.active {
-            color: $white;
+            color: $blue;
             text-decoration: none;
         }
     }

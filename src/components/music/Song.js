@@ -17,11 +17,17 @@ const Song = props => {
         props.dispatch(playNewSong(song));
     };
 
+    const handleDragover = e => {
+        e.preventDefault();
+    };
+
     return (
         <tr
             onDoubleClick={handleDoubleClick}
             onClick={onClick}
             className={isCurrent ? 'current' : ''}
+            draggable={true}
+            onDragOver={handleDragover}
         >
             <td>{song.title}</td>
             <td>{song.artist}</td>

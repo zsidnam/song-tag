@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import SongTable from '../music/SongTable';
+import { fetchLibrarySongs } from '../../store/actions/library-actions';
 import { setCurrentSong } from '../../store/actions/player-actions';
 
 import '../../styles/library.scss';
@@ -11,22 +12,15 @@ class Library extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            songs: []
-        };
-
         this.isCurrentSong = this.isCurrentSong.bind(this);
     }
 
     async componentDidMount() {
-        // TODO: move to action, replace with server call
-        // consider moving this to app startup
-        const { data } = await axios.get('/songs/test-songs.json');
-        this.setState({ songs: data.songs });
+        await this.props.dispatch(fetchLibrarySongs());
 
         // Set initial song into player if empty
-        if (!this.props.currentSong && data.songs.length) {
-            this.props.dispatch(setCurrentSong(data.songs[0]));
+        if (!this.props.currentSong && this.props.songs.length) {
+            this.props.dispatch(setCurrentSong(this.props.songs[0]));
         }
     }
 
@@ -43,7 +37,7 @@ class Library extends React.Component {
             <Fragment>
                 <div id={'library-showcase'}>Some content goes here</div>
                 <SongTable
-                    songs={this.state.songs}
+                    songs={this.props.songs}
                     dispatch={this.props.dispatch}
                     isCurrentSong={this.isCurrentSong}
                 />
@@ -52,8 +46,14 @@ class Library extends React.Component {
     }
 }
 
+Library.propTypes = {
+    songs: PropTypes.array,
+    currentSong: PropTypes.object
+};
+
 const mapStateToProps = state => {
     return {
+        songs: state.library.songs,
         currentSong: state.player.currentSong
     };
 };

@@ -10,7 +10,8 @@ const initPlayerState = {
     currentSong: null,
     isPlaying: false,
     volume: 0.5,
-    loop: false
+    loop: false,
+    queue: []
 };
 
 const playerReducer = (state = initPlayerState, action) => {
