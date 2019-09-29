@@ -3,7 +3,9 @@ import {
     SET_CURRENT_SONG,
     CHANGE_VOLUME,
     TOGGLE_LOOP,
-    TOGGLE_PLAY_PAUSE
+    TOGGLE_PLAY_PAUSE,
+    UPDATE_PLAYLIST,
+    UPDATE_PLAYLIST_POSITION
 } from './action-types';
 
 export const playNewSong = newSong => dispatch => {
@@ -37,4 +39,43 @@ export const toggleLoop = () => dispatch => {
     dispatch({
         type: TOGGLE_LOOP
     });
+};
+
+export const updatePlaylist = newSongs => dispatch => {
+    dispatch({
+        type: UPDATE_PLAYLIST,
+        payload: { songs: newSongs }
+    });
+};
+
+export const updatePlaylistPosition = newPosition => dispatch => {
+    dispatch({
+        type: UPDATE_PLAYLIST_POSITION,
+        payload: { playlistPosition: newPosition }
+    });
+};
+
+export const nextSong = () => (dispatch, getState) => {
+    const { player } = getState();
+    const { playlistPosition, playlist } = player;
+
+    const nextPos =
+        playlistPosition === playlist.length - 1 ? 0 : playlistPosition + 1;
+
+    const nextSong = playlist[nextPos];
+
+    dispatch(updatePlaylistPosition(nextPos));
+    dispatch(setCurrentSong(nextSong));
+};
+
+export const prevSong = () => (dispatch, getState) => {
+    const { player } = getState();
+    const { playlistPosition, playlist } = player;
+
+    const prevPos = playlistPosition === 0 ? 0 : playlistPosition - 1;
+
+    const prevSong = playlist[prevPos];
+
+    dispatch(updatePlaylistPosition(prevPos));
+    dispatch(setCurrentSong(prevSong));
 };

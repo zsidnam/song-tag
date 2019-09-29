@@ -1,8 +1,6 @@
 @import './constants.scss';
 
-div#control-container {
-    background-color: $darkGray;
-    height: 100px;
+div#main-controls {
     display: flex;
     justify-content: center;
     align-items: center;

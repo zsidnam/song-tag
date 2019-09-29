@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+
+import CurrentInfo from '../music/CurrentInfo';
+import Controls from '../music/Controls';
+import SecondaryControls from '../music/SecondaryControls';
 
 import {
     togglePlayPause,
     changeVolume,
-    toggleLoop
+    toggleLoop,
+    nextSong,
+    prevSong
 } from '../../store/actions/player-actions';
-import Controls from '../music/Controls';
 
 import '../../styles/player.scss';
 
@@ -19,6 +24,8 @@ class Player extends React.Component {
         this.handlePlayToggle = this.handlePlayToggle.bind(this);
         this.handleLoopToggle = this.handleLoopToggle.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
     }
 
     componentDidMount() {
@@ -81,27 +88,51 @@ class Player extends React.Component {
         this.props.dispatch(changeVolume(parseFloat(e.target.value)));
     }
 
+    handleNext() {
+        this.props.dispatch(nextSong());
+    }
+
+    handlePrev() {
+        if (!this._getAudioSrc()) {
+            console.log('cannot read playback time; no audio source');
+            return;
+        }
+
+        if (this.audioRef.current.currentTime < 3) {
+            this.props.dispatch(prevSong());
+        } else {
+            // Reset song if prev is clicked in middle of playback
+            this.audioRef.current.currentTime = 0;
+        }
+    }
+
     render() {
         return (
-            <div id={'player-container'}>
+            <Fragment>
                 <audio
                     ref={this.audioRef}
                     src={this._getAudioSrc()}
                     loop={this.props.loop}
-                    onEnded={() => {
-                        // does not fire if loop is true
-                        console.log('song ended');
-                    }}
+                    onEnded={this.handleNext}
                 />
-                <Controls
-                    isPlaying={this.props.isPlaying}
-                    volume={this.props.volume}
-                    loop={this.props.loop}
-                    handlePlayToggle={this.handlePlayToggle}
-                    handleVolumeChange={this.handleVolumeChange}
-                    handleLoopToggle={this.handleLoopToggle}
-                />
-            </div>
+                <div id={'player-container'}>
+                    <CurrentInfo currentSong={this.props.currentSong} />
+                    <Controls
+                        isPlaying={this.props.isPlaying}
+                        volume={this.props.volume}
+                        loop={this.props.loop}
+                        handlePlayToggle={this.handlePlayToggle}
+                        handleVolumeChange={this.handleVolumeChange}
+                        handleLoopToggle={this.handleLoopToggle}
+                        handleNext={this.handleNext}
+                        handlePrev={this.handlePrev}
+                    />
+                    <SecondaryControls
+                        volume={this.props.volume}
+                        handleVolumeChange={this.handleVolumeChange}
+                    />
+                </div>
+            </Fragment>
         );
     }
 }
@@ -114,7 +145,10 @@ const mapStateToProps = state => {
         currentSong: player.currentSong,
         isPlaying: player.isPlaying,
         volume: player.volume,
-        loop: player.loop
+        loop: player.loop,
+        playlist: player.playlist,
+        queue: player.queue,
+        playlistPosition: player.playlistPosition
     };
 };
 

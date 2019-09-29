@@ -3,6 +3,32 @@
 div#player-container {
     background-color: $darkGray;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 0px 15px;
+    height: 100px;
+
+    div#current-info {
+        flex: 1;
+        color: $white;
+
+        p {
+            margin: 8px 0px;
+
+            &.artist {
+                color: $veryLightGray;
+            }
+        }
+    }
+
+    // See controls.scss for remaining main-controls styling
+    div#main-controls {
+        flex: 2;
+    }
+
+    div#secondary-controls {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
 }

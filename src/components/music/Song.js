@@ -28,6 +28,10 @@ const Song = props => {
             className={isCurrent ? 'current' : ''}
             draggable={true}
             onDragOver={handleDragover}
+            onContextMenu={e => {
+                e.preventDefault();
+                console.log('implement me!');
+            }}
         >
             <td>{song.title}</td>
             <td>{song.artist}</td>

@@ -3,7 +3,9 @@ import {
     SET_CURRENT_SONG,
     CHANGE_VOLUME,
     TOGGLE_LOOP,
-    TOGGLE_PLAY_PAUSE
+    TOGGLE_PLAY_PAUSE,
+    UPDATE_PLAYLIST,
+    UPDATE_PLAYLIST_POSITION
 } from '../actions/action-types';
 
 const initPlayerState = {
@@ -11,7 +13,9 @@ const initPlayerState = {
     isPlaying: false,
     volume: 0.5,
     loop: false,
-    queue: []
+    playlist: [],
+    queue: [],
+    playlistPosition: 0
 };
 
 const playerReducer = (state = initPlayerState, action) => {
@@ -49,6 +53,21 @@ const playerReducer = (state = initPlayerState, action) => {
             return {
                 ...state,
                 loop: !state.loop
+            };
+        }
+
+        case UPDATE_PLAYLIST: {
+            return {
+                ...state,
+                playlist: action.payload.songs,
+                playlistPosition: 0
+            };
+        }
+
+        case UPDATE_PLAYLIST_POSITION: {
+            return {
+                ...state,
+                playlistPosition: action.payload.playlistPosition
             };
         }
 

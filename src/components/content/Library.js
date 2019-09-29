@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 
 import SongTable from '../music/SongTable';
 import { fetchLibrarySongs } from '../../store/actions/library-actions';
-import { setCurrentSong } from '../../store/actions/player-actions';
+import {
+    setCurrentSong,
+    updatePlaylist
+} from '../../store/actions/player-actions';
 
 import '../../styles/library.scss';
 
@@ -18,9 +21,10 @@ class Library extends React.Component {
     async componentDidMount() {
         await this.props.dispatch(fetchLibrarySongs());
 
-        // Set initial song into player if empty
+        // Set initial song into player if empty, set initial queue
         if (!this.props.currentSong && this.props.songs.length) {
             this.props.dispatch(setCurrentSong(this.props.songs[0]));
+            this.props.dispatch(updatePlaylist(this.props.songs));
         }
     }
 
