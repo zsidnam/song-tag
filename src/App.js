@@ -14,12 +14,14 @@ function App() {
     return (
         <Provider store={store}>
             <Router>
-                <Navbar />
-                <div id='main-content'>
-                    <Content />
-                    <Sidebar />
+                <div id={'app-container'}>
+                    <Navbar />
+                    <div id='main-content'>
+                        <Content />
+                        <Sidebar />
+                    </div>
+                    <Player />
                 </div>
-                <Player />
             </Router>
         </Provider>
     );

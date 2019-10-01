@@ -8,16 +8,34 @@ body {
         'Lucida Sans', Arial, sans-serif;
 }
 
-#main-content {
-    min-height: 700px;
+#app-container {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 
-    section {
-        flex: 3;
+    // See navbar.scss for remaining nav styles
+    nav {
+        flex: none;
     }
 
-    aside {
+    #main-content {
+        display: flex;
         flex: 1;
-        background-color: $lightGray;
+        overflow-y: auto;
+
+        section {
+            flex: 3;
+            padding: 0px 15px;
+        }
+
+        aside {
+            flex: 1;
+            background-color: $lightGray;
+        }
+    }
+
+    #player-container {
+        flex: none;
     }
 }

@@ -10,6 +10,7 @@ table {
             background-color: $black;
 
             th {
+                color: $veryLightGray;
                 height: 40px;
                 text-transform: uppercase;
                 text-align: left;
@@ -20,21 +21,20 @@ table {
     tbody {
         tr {
             cursor: pointer;
+            background-color: $black;
+            border-top: 2px solid $darkGray;
+            border-bottom: 2px solid $darkGray;
 
             &.current {
                 color: $blue;
             }
 
-            &:nth-child(odd) {
+            &:hover {
                 background-color: $darkGray;
             }
 
-            &:nth-child(even) {
-                background-color: $black;
-            }
-
             td {
-                height: 30px;
+                height: 35px;
             }
         }
     }
