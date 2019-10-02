@@ -66,7 +66,7 @@ export const nextSong = () => (dispatch, getState) => {
     const nextSong = playlist[nextPos];
 
     dispatch(updatePlaylistPosition(nextPos));
-    dispatch(setCurrentSong(nextSong));
+    dispatch(playNewSong(nextSong));
 };
 
 export const prevSong = () => (dispatch, getState) => {
@@ -78,11 +78,13 @@ export const prevSong = () => (dispatch, getState) => {
     const prevSong = playlist[prevPos];
 
     dispatch(updatePlaylistPosition(prevPos));
-    dispatch(setCurrentSong(prevSong));
+    dispatch(playNewSong(prevSong));
 };
 
 export const handlePlayError = () => dispatch => {
     // TODO: Add toast notification here to display error
     console.log('Unable to play track. Please try again later');
-    dispatch(HANDLE_PLAY_ERROR);
+    dispatch({
+        type: HANDLE_PLAY_ERROR
+    });
 };

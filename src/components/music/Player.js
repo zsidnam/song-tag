@@ -10,7 +10,8 @@ import {
     changeVolume,
     toggleLoop,
     nextSong,
-    prevSong
+    prevSong,
+    handlePlayError
 } from '../../store/actions/player-actions';
 
 import '../../styles/player.scss';
@@ -54,22 +55,16 @@ class Player extends React.Component {
         this.audioRef.current.volume = this.props.volume;
     }
 
-    _ableToPlay() {
-        return this.audioRef.current.readyState < 2;
-    }
-
-    _handlePlayUpdate() {
+    async _handlePlayUpdate() {
         // TODO: handle restarting song when double clicked
+        try {
+            if (this.props.isPlaying) {
+                return await this.audioRef.current.play();
+            }
 
-        if (!this._ableToPlay()) {
-            console.log('Unable to play track right now.');
-            return this.props.dispatch();
-        }
-
-        if (this.props.isPlaying) {
-            this.audioRef.current.play();
-        } else {
-            this.audioRef.current.pause();
+            return await this.audioRef.current.pause();
+        } catch (err) {
+            return this.props.dispatch(handlePlayError());
         }
     }
 
@@ -82,17 +77,6 @@ class Player extends React.Component {
     }
 
     handlePlayToggle() {
-        if (!this._getAudioSrc()) {
-            console.log('cannot play/pause; no audio source');
-            return;
-        }
-
-        const test = this.audioRef.current;
-        if (test.readyState <= 1) {
-            console.log('unable to play track. Please try again.');
-            return;
-        }
-
         this.props.dispatch(togglePlayPause());
     }
 
@@ -109,11 +93,6 @@ class Player extends React.Component {
     }
 
     handlePrev() {
-        if (!this._getAudioSrc()) {
-            console.log('cannot read playback time; no audio source');
-            return;
-        }
-
         if (this.audioRef.current.currentTime < 3) {
             this.props.dispatch(prevSong());
         } else {
