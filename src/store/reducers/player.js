@@ -5,7 +5,8 @@ import {
     TOGGLE_LOOP,
     TOGGLE_PLAY_PAUSE,
     UPDATE_PLAYLIST,
-    UPDATE_PLAYLIST_POSITION
+    UPDATE_PLAYLIST_POSITION,
+    HANDLE_PLAY_ERROR
 } from '../actions/action-types';
 
 const initPlayerState = {
@@ -68,6 +69,13 @@ const playerReducer = (state = initPlayerState, action) => {
             return {
                 ...state,
                 playlistPosition: action.payload.playlistPosition
+            };
+        }
+
+        case HANDLE_PLAY_ERROR: {
+            return {
+                ...state,
+                isPlaying: false
             };
         }
 

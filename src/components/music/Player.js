@@ -54,8 +54,18 @@ class Player extends React.Component {
         this.audioRef.current.volume = this.props.volume;
     }
 
+    _ableToPlay() {
+        return this.audioRef.current.readyState < 2;
+    }
+
     _handlePlayUpdate() {
         // TODO: handle restarting song when double clicked
+
+        if (!this._ableToPlay()) {
+            console.log('Unable to play track right now.');
+            return this.props.dispatch();
+        }
+
         if (this.props.isPlaying) {
             this.audioRef.current.play();
         } else {
@@ -74,6 +84,12 @@ class Player extends React.Component {
     handlePlayToggle() {
         if (!this._getAudioSrc()) {
             console.log('cannot play/pause; no audio source');
+            return;
+        }
+
+        const test = this.audioRef.current;
+        if (test.readyState <= 1) {
+            console.log('unable to play track. Please try again.');
             return;
         }
 

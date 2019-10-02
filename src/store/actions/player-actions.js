@@ -5,7 +5,8 @@ import {
     TOGGLE_LOOP,
     TOGGLE_PLAY_PAUSE,
     UPDATE_PLAYLIST,
-    UPDATE_PLAYLIST_POSITION
+    UPDATE_PLAYLIST_POSITION,
+    HANDLE_PLAY_ERROR
 } from './action-types';
 
 export const playNewSong = newSong => dispatch => {
@@ -78,4 +79,10 @@ export const prevSong = () => (dispatch, getState) => {
 
     dispatch(updatePlaylistPosition(prevPos));
     dispatch(setCurrentSong(prevSong));
+};
+
+export const handlePlayError = () => dispatch => {
+    // TODO: Add toast notification here to display error
+    console.log('Unable to play track. Please try again later');
+    dispatch(HANDLE_PLAY_ERROR);
 };
