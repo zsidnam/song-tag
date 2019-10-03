@@ -2,21 +2,50 @@
 
 div#main-controls {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
 
-    button {
-        color: $white;
-        background-color: $darkGray;
-        height: 45px;
-        width: 45px;
-        border: 2px solid $blue;
-        margin: 10px;
-        border-radius: 8px;
-        cursor: pointer;
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        &:focus {
-            outline: none;
+        button {
+            height: 40px;
+            width: 40px;
+            color: $white;
+            background-color: $darkGray;
+            border: 1px solid $veryLightGray;
+            border-radius: 8px;
+            margin: 5px 10px 10px 10px;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                border-color: $white;
+            }
+
+            &.active {
+                color: $blue;
+                border-color: $blue;
+            }
+
+            &.small {
+                height: 30px;
+                width: 30px;
+            }
+        }
+
+        &#scan-control {
+            justify-content: space-between;
+            color: $veryLightGray;
+
+            input {
+                width: 85%;
+            }
         }
     }
 }
