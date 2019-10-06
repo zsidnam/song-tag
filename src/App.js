@@ -3,9 +3,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import Content from './components/layout/Content';
-import Navbar from './components/layout/Navbar';
-import Player from './components/music/Player';
+import Content from './components/content/Content';
+import Navbar from './components/navbar/Navbar';
+import Player from './components/player/Player';
 
 import './styles/layout.scss';
 

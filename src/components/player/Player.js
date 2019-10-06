@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { throttle } from 'throttle-debounce';
 
-import CurrentInfo from '../music/CurrentInfo';
-import Controls from '../music/Controls';
-import SecondaryControls from '../music/SecondaryControls';
+import CurrentInfo from './CurrentInfo';
+import Controls from './Controls';
+import SecondaryControls from './SecondaryControls';
 
 import {
     togglePlayPause,

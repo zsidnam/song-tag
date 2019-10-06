@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import SongTable from '../music/SongTable';
+import SongTable from './SongTable';
 import { fetchLibrarySongs } from '../../store/actions/library-actions';
 import {
     setCurrentSong,

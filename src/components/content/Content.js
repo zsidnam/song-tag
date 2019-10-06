@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
-import Landing from '../content/Landing';
-import Library from '../content/Library';
-import Queue from '../layout/Queue';
+import Landing from './Landing';
+import Library from './Library';
+import Queue from '../queue/Queue';
 
 const Content = props => {
     return (
