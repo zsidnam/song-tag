@@ -1,20 +1,14 @@
 import {
-    PLAY_NEW_SONG,
+    REQUEST_NEW_SONG,
     SET_CURRENT_SONG,
     CHANGE_VOLUME,
     TOGGLE_LOOP,
     TOGGLE_PLAY_PAUSE,
     UPDATE_PLAYLIST,
     UPDATE_PLAYLIST_POSITION,
-    HANDLE_PLAY_ERROR
+    HANDLE_PLAY_ERROR,
+    TOGGLE_QUEUE_DISPLAY
 } from './action-types';
-
-export const playNewSong = newSong => dispatch => {
-    dispatch({
-        type: PLAY_NEW_SONG,
-        payload: { song: newSong }
-    });
-};
 
 export const setCurrentSong = song => dispatch => {
     dispatch({
@@ -56,6 +50,29 @@ export const updatePlaylistPosition = newPosition => dispatch => {
     });
 };
 
+export const toggleQueueDisplay = () => dispatch => {
+    dispatch({
+        type: TOGGLE_QUEUE_DISPLAY
+    });
+};
+
+export const requestNewSong = newSong => (dispatch, getState) => {
+    const { player } = getState();
+    const { playlist } = player;
+
+    const newSongPosition = playlist.findIndex(x => x.id === newSong.id);
+    if (newSongPosition < 0) {
+        throw new Error('Requested song not set in playlist');
+    }
+
+    dispatch({
+        type: REQUEST_NEW_SONG,
+        payload: { song: newSong, playlistPosition: newSongPosition }
+    });
+};
+
+// TODO: This assumes playlist repeat is always on. Change to allow
+// for playlist to end.
 export const nextSong = () => (dispatch, getState) => {
     const { player } = getState();
     const { playlistPosition, playlist } = player;
@@ -66,19 +83,22 @@ export const nextSong = () => (dispatch, getState) => {
     const nextSong = playlist[nextPos];
 
     dispatch(updatePlaylistPosition(nextPos));
-    dispatch(playNewSong(nextSong));
+    dispatch(requestNewSong(nextSong));
 };
 
+// TODO: This assumes playlist repeat is always on. Change to allow
+// for playlist to end.
 export const prevSong = () => (dispatch, getState) => {
     const { player } = getState();
     const { playlistPosition, playlist } = player;
 
-    const prevPos = playlistPosition === 0 ? 0 : playlistPosition - 1;
+    const prevPos =
+        playlistPosition === 0 ? playlist.length - 1 : playlistPosition - 1;
 
     const prevSong = playlist[prevPos];
 
     dispatch(updatePlaylistPosition(prevPos));
-    dispatch(playNewSong(prevSong));
+    dispatch(requestNewSong(prevSong));
 };
 
 export const handlePlayError = () => dispatch => {

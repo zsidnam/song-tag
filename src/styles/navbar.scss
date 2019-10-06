@@ -1,19 +1,20 @@
 @import './constants.scss';
 
 nav {
-    height: 60px;
-    background-color: $black;
-    border: $blue 2px solid;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    background-color: $nearBlack;
+    padding: 0px 20px;
+    height: 100%;
 
     a {
         color: $white;
         font-weight: bold;
         text-transform: uppercase;
         text-decoration: underline;
-        margin: 0px 15px;
+        margin-top: 15px;
 
         &.active {
             color: $blue;

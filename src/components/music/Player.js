@@ -12,7 +12,8 @@ import {
     toggleLoop,
     nextSong,
     prevSong,
-    handlePlayError
+    handlePlayError,
+    toggleQueueDisplay
 } from '../../store/actions/player-actions';
 
 import '../../styles/player.scss';
@@ -37,6 +38,7 @@ class Player extends React.Component {
         this.handlePlayToggle = this.handlePlayToggle.bind(this);
         this.handleLoopToggle = this.handleLoopToggle.bind(this);
         this.handleVolumeChange = this.handleVolumeChange.bind(this);
+        this.handleQueueToggle = this.handleQueueToggle.bind(this);
         this.handleScanChange = this.handleScanChange.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
@@ -75,7 +77,6 @@ class Player extends React.Component {
     }
 
     async _changePlayState() {
-        // TODO: handle restarting song when double clicked
         try {
             if (this.props.isPlaying) {
                 return await this.audioRef.current.play();
@@ -158,6 +159,10 @@ class Player extends React.Component {
         this.debouncedUpdatePlaybackPosition();
     }
 
+    handleQueueToggle() {
+        this.props.dispatch(toggleQueueDisplay());
+    }
+
     render() {
         return (
             <Fragment>
@@ -168,28 +173,31 @@ class Player extends React.Component {
                     onEnded={this.handleNext}
                     onTimeUpdate={this.handleTimeUpdate}
                 />
-                <div id={'player-container'}>
-                    <CurrentInfo currentSong={this.props.currentSong} />
-                    <Controls
-                        isPlaying={this.props.isPlaying}
-                        volume={this.props.volume}
-                        loop={this.props.loop}
-                        playbackPosition={this.state.playbackPosition}
-                        duration={this._getAudioDuration()}
-                        handlePlayToggle={this.handlePlayToggle}
-                        handleVolumeChange={this.handleVolumeChange}
-                        handleLoopToggle={this.handleLoopToggle}
-                        handleNext={this.handleNext}
-                        handlePrev={this.handlePrev}
-                        handleScanChange={this.handleScanChange}
-                        handleScanHold={this.handleScanHold}
-                        handleScanRelease={this.handleScanRelease}
-                    />
-                    <SecondaryControls
-                        volume={this.props.volume}
-                        handleVolumeChange={this.handleVolumeChange}
-                    />
-                </div>
+
+                <CurrentInfo currentSong={this.props.currentSong} />
+
+                <Controls
+                    isPlaying={this.props.isPlaying}
+                    volume={this.props.volume}
+                    loop={this.props.loop}
+                    playbackPosition={this.state.playbackPosition}
+                    duration={this._getAudioDuration()}
+                    handlePlayToggle={this.handlePlayToggle}
+                    handleVolumeChange={this.handleVolumeChange}
+                    handleLoopToggle={this.handleLoopToggle}
+                    handleNext={this.handleNext}
+                    handlePrev={this.handlePrev}
+                    handleScanChange={this.handleScanChange}
+                    handleScanHold={this.handleScanHold}
+                    handleScanRelease={this.handleScanRelease}
+                />
+
+                <SecondaryControls
+                    volume={this.props.volume}
+                    handleVolumeChange={this.handleVolumeChange}
+                    handleQueueToggle={this.handleQueueToggle}
+                    showQueue={this.props.showQueue}
+                />
             </Fragment>
         );
     }
@@ -206,7 +214,8 @@ const mapStateToProps = state => {
         loop: player.loop,
         playlist: player.playlist,
         queue: player.queue,
-        playlistPosition: player.playlistPosition
+        playlistPosition: player.playlistPosition,
+        showQueue: player.showQueue
     };
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { playNewSong } from '../../store/actions/player-actions';
+import { requestNewSong } from '../../store/actions/player-actions';
 
 const Song = props => {
     const { song } = props;
@@ -13,8 +13,7 @@ const Song = props => {
     };
 
     const handleDoubleClick = () => {
-        // TODO: Suppress the single click here
-        props.dispatch(playNewSong(song));
+        props.dispatch(requestNewSong(song));
     };
 
     const handleDragover = e => {

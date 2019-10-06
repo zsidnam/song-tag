@@ -8,30 +8,39 @@ body {
         'Lucida Sans', Arial, sans-serif;
 }
 
+// Setup top-level container layouts here. Further styling
+// of lower-level containers setup in respective style sheets.
 #app-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
 
-    // See navbar.scss for remaining nav styles
-    nav {
-        flex: none;
-    }
-
-    #main-content {
-        display: flex;
+    #primary-container {
         flex: 1;
-        overflow-y: auto;
+        display: flex;
+        justify-content: space-between;
+        overflow-y: hidden;
 
-        section {
-            flex: 3;
-            padding: 0px 15px;
+        #nav-container {
+            flex: none;
+            width: 225px;
+            height: 100%;
         }
 
-        aside {
+        #main-content-container {
+            display: flex;
             flex: 1;
-            background-color: $lightGray;
+            overflow-y: auto;
+
+            section {
+                flex: 5;
+                padding: 0px 30px;
+            }
+
+            aside {
+                flex: 3;
+            }
         }
     }
 

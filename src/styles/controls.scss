@@ -4,48 +4,48 @@ div#main-controls {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
 
-    div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+div.control-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        button {
-            height: 40px;
-            width: 40px;
-            color: $white;
-            background-color: $darkGray;
-            border: 1px solid $veryLightGray;
-            border-radius: 8px;
-            margin: 5px 10px 10px 10px;
-            cursor: pointer;
+    &#scan-control {
+        justify-content: space-between;
+        color: $veryLightGray;
 
-            &:focus {
-                outline: none;
-            }
+        input {
+            width: 85%;
+        }
+    }
 
-            &:hover {
-                border-color: $white;
-            }
+    button {
+        height: 35px;
+        width: 35px;
+        color: $white;
+        background-color: $darkGray;
+        border: 1px solid $veryLightGray;
+        border-radius: 20px;
+        margin: 5px 10px 8px 10px;
+        cursor: pointer;
 
-            &.active {
-                color: $blue;
-                border-color: $blue;
-            }
-
-            &.small {
-                height: 30px;
-                width: 30px;
-            }
+        &:focus {
+            outline: none;
         }
 
-        &#scan-control {
-            justify-content: space-between;
-            color: $veryLightGray;
+        &:hover {
+            border-color: $white;
+        }
 
-            input {
-                width: 85%;
-            }
+        &.active {
+            color: $blue;
+            border-color: $blue;
+        }
+
+        &.small {
+            height: 25px;
+            width: 25px;
         }
     }
 }

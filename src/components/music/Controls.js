@@ -26,8 +26,15 @@ const Controls = props => {
 
     return (
         <div id={'main-controls'}>
-            <div>
-                <button className={'small'}>S</button>
+            <div className={'control-container'}>
+                <button
+                    onClick={() => {
+                        alert('Not implemented yet!');
+                    }}
+                    className={'small'}
+                >
+                    S
+                </button>
 
                 <button onClick={handlePrev}>{'|<'}</button>
 
@@ -44,7 +51,7 @@ const Controls = props => {
                     R
                 </button>
             </div>
-            <div id={'scan-control'}>
+            <div id={'scan-control'} className={'control-container'}>
                 {formatTime(playbackPosition)}
                 <Slider
                     value={playbackPosition}

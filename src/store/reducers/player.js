@@ -1,12 +1,13 @@
 import {
-    PLAY_NEW_SONG,
+    REQUEST_NEW_SONG,
     SET_CURRENT_SONG,
     CHANGE_VOLUME,
     TOGGLE_LOOP,
     TOGGLE_PLAY_PAUSE,
     UPDATE_PLAYLIST,
     UPDATE_PLAYLIST_POSITION,
-    HANDLE_PLAY_ERROR
+    HANDLE_PLAY_ERROR,
+    TOGGLE_QUEUE_DISPLAY
 } from '../actions/action-types';
 
 const initPlayerState = {
@@ -16,15 +17,17 @@ const initPlayerState = {
     loop: false,
     playlist: [],
     queue: [],
-    playlistPosition: 0
+    playlistPosition: 0,
+    showQueue: false
 };
 
 const playerReducer = (state = initPlayerState, action) => {
     switch (action.type) {
-        case PLAY_NEW_SONG: {
+        case REQUEST_NEW_SONG: {
             return {
                 ...state,
                 currentSong: action.payload.song,
+                playlistPosition: action.payload.playlistPosition,
                 isPlaying: true
             };
         }
@@ -76,6 +79,13 @@ const playerReducer = (state = initPlayerState, action) => {
             return {
                 ...state,
                 isPlaying: false
+            };
+        }
+
+        case TOGGLE_QUEUE_DISPLAY: {
+            return {
+                ...state,
+                showQueue: !state.showQueue
             };
         }
 

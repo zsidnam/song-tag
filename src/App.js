@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import Content from './components/layout/Content';
-import Sidebar from './components/layout/Sidebar';
 import Navbar from './components/layout/Navbar';
 import Player from './components/music/Player';
 
@@ -15,12 +14,13 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div id={'app-container'}>
-                    <Navbar />
-                    <div id='main-content'>
+                    <div id={'primary-container'}>
+                        <Navbar />
                         <Content />
-                        <Sidebar />
                     </div>
-                    <Player />
+                    <div id={'player-container'}>
+                        <Player />
+                    </div>
                 </div>
             </Router>
         </Provider>
