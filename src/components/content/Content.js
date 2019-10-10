@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import Landing from './Landing';
-import Library from './Library';
+import Albums from './Albums';
+import Album from './Album';
 import Queue from '../queue/Queue';
 
 const Content = props => {
@@ -12,7 +13,8 @@ const Content = props => {
             <section>
                 <Switch>
                     <Route exact path='/' component={Landing} />
-                    <Route exact path='/library' component={Library} />
+                    <Route exact path='/albums' component={Albums} />
+                    <Route exact path='/albums/:id' component={Album} />
                 </Switch>
             </section>
             {props.showQueue && <Queue />}

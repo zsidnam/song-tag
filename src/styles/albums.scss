@@ -1,0 +1,11 @@
+@import './constants.scss';
+
+h1 {
+    color: $white;
+    font-size: 36px;
+}
+
+#albums-table {
+    display: flex;
+    flex-wrap: wrap;
+}

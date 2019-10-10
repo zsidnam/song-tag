@@ -1,7 +1,15 @@
-import { UPDATE_LIBRARY_SONGS } from '../actions/action-types';
+import {
+    UPDATE_LIBRARY_SONGS,
+    UPDATE_ALBUMS,
+    UPDATE_ALBUM
+} from '../actions/action-types';
 
 const initLibraryState = {
-    songs: []
+    songs: [],
+    albums: [],
+    album: {},
+    artists: [],
+    playlists: []
 };
 
 const libraryReducer = (state = initLibraryState, action) => {
@@ -10,6 +18,20 @@ const libraryReducer = (state = initLibraryState, action) => {
             return {
                 ...state,
                 songs: action.payload.songs
+            };
+        }
+
+        case UPDATE_ALBUMS: {
+            return {
+                ...state,
+                albums: action.payload.albums
+            };
+        }
+
+        case UPDATE_ALBUM: {
+            return {
+                ...state,
+                album: action.payload.album
             };
         }
 

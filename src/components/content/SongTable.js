@@ -12,7 +12,6 @@ const SongTable = props => {
                     <th>Title</th>
                     <th>Artist</th>
                     <th>Album</th>
-                    <th>Genre</th>
                     <th>Time</th>
                 </tr>
             </thead>
@@ -21,8 +20,8 @@ const SongTable = props => {
                     <Song
                         song={song}
                         key={song.id}
-                        dispatch={props.dispatch}
                         isCurrentSong={props.isCurrentSong}
+                        playSong={props.playSong}
                     />
                 ))}
             </tbody>
@@ -32,8 +31,8 @@ const SongTable = props => {
 
 SongTable.propTypes = {
     songs: PropTypes.arrayOf(PropTypes.object),
-    dispatch: PropTypes.func,
-    isCurrentSong: PropTypes.func
+    isCurrentSong: PropTypes.func,
+    playSong: PropTypes.func
 };
 
 export default SongTable;

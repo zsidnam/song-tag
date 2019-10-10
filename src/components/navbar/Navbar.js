@@ -10,8 +10,8 @@ const Navbar = withRouter(props => {
                 <NavLink exact to={'/'} activeClassName={'active'}>
                     Home
                 </NavLink>
-                <NavLink exact to={'/library'} activeClassName={'active'}>
-                    Library
+                <NavLink exact to={'/albums'} activeClassName={'active'}>
+                    Albums
                 </NavLink>
             </nav>
         </div>

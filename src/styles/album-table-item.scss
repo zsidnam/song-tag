@@ -1,0 +1,25 @@
+@import './constants.scss';
+
+div.album {
+    width: 150px;
+    padding: 0px 8px;
+    margin-bottom: 15px;
+
+    img {
+        max-width: 150px;
+        cursor: pointer;
+    }
+
+    p {
+        text-align: center;
+        margin: 10px 0px;
+
+        &.title {
+            color: $white;
+        }
+
+        &.artist {
+            color: $veryLightGray;
+        }
+    }
+}
