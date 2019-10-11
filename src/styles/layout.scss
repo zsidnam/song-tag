@@ -4,8 +4,8 @@ body {
     background-color: $black;
     margin: 0px;
     width: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-        'Lucida Sans', Arial, sans-serif;
+    color: $white;
+    @include primaryFont;
 }
 
 // Setup top-level container layouts here. Further styling

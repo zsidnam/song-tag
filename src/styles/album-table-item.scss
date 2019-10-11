@@ -5,6 +5,12 @@ div.album {
     padding: 0px 8px;
     margin-bottom: 15px;
 
+    a {
+        &:active {
+            text-decoration: none;
+        }
+    }
+
     img {
         max-width: 150px;
         cursor: pointer;

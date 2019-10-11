@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import AlbumTableItem from './AlbumTableItem';
+import Loading from '../common/Loading';
 
 import { fetchAlbums } from '../../store/actions/library-actions';
 
@@ -13,6 +14,10 @@ class Albums extends React.Component {
     }
 
     render() {
+        if (this.props.isUpdating) {
+            return <Loading />;
+        }
+
         return (
             <Fragment>
                 <h1>ALBUMS</h1>
@@ -29,7 +34,8 @@ class Albums extends React.Component {
 const mapStateToProps = state => {
     const { library } = state;
     return {
-        albums: library.albums
+        albums: library.albums,
+        isUpdating: library.isUpdating
     };
 };
 

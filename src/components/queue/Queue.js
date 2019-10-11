@@ -3,7 +3,7 @@ import React from 'react';
 import '../../styles/queue.scss';
 
 const Queue = props => {
-    return <aside>asdf</aside>;
+    return <aside></aside>;
 };
 
 export default Queue;

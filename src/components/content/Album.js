@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import SongTable from './SongTable';
+import Loading from '../common/Loading';
 
 import { fetchAlbum } from '../../store/actions/library-actions';
 import {
@@ -17,6 +18,7 @@ class Album extends React.Component {
 
         this.isCurrentSong = this.isCurrentSong.bind(this);
         this.playSong = this.playSong.bind(this);
+        this.playAlbum = this.playAlbum.bind(this);
     }
 
     componentDidMount() {
@@ -40,13 +42,33 @@ class Album extends React.Component {
         this.props.dispatch(requestNewSong(song));
     }
 
+    playAlbum() {
+        if (!(this.props.album.songs || []).length) {
+            console.log('No songs to play for this album.');
+            return;
+        }
+
+        this.playSong(this.props.album.songs[0]);
+    }
+
     render() {
+        if (this.props.isUpdating) {
+            return <Loading />;
+        }
+
         return (
             <Fragment>
-                <img
-                    src={this.props.album.artSrc}
-                    alt={`Album Art: ${this.props.album.title}`}
-                />
+                <div className={'summary'}>
+                    <img
+                        src={this.props.album.artSrc}
+                        alt={`Album Art: ${this.props.album.title}`}
+                    />
+                    <div className={'titles'}>
+                        <h1>{this.props.album.title}</h1>
+                        <h2>{this.props.album.artistName}</h2>
+                        <button onClick={this.playAlbum}>PLAY</button>
+                    </div>
+                </div>
                 <SongTable
                     songs={this.props.album.songs || []}
                     dispatch={this.props.dispatch}
@@ -60,7 +82,8 @@ class Album extends React.Component {
 
 const mapStateToProps = state => ({
     album: state.library.album,
-    currentSong: state.player.currentSong
+    currentSong: state.player.currentSong,
+    isUpdating: state.library.isUpdating
 });
 
 export default connect(mapStateToProps)(Album);

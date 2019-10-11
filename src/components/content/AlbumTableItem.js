@@ -8,10 +8,11 @@ const Album = props => {
     const { album } = props;
     return (
         <div className={'album'}>
-            <img src={album.artSrc} alt={`Album Art: ${album.title}`} />
-            <p className={'title'}>{album.title}</p>
+            <Link to={`/albums/${album.id}`}>
+                <img src={album.artSrc} alt={`Album Art: ${album.title}`} />
+                <p className={'title'}>{album.title}</p>
+            </Link>
             <p className={'artist'}>{album.artistName}</p>
-            <Link to={`/albums/${album.id}`}>go here</Link>
         </div>
     );
 };
