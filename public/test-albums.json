@@ -1,0 +1,18 @@
+{
+    "albums": [
+        {
+            "id": 1,
+            "title": "Come Around Sundown",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "artSrc": "/album-art/come_around_sundown.jpg"
+        },
+        {
+            "id": 2,
+            "title": " Gorilla Manor",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "artSrc": "/album-art/gorilla_manor.jpg"
+        }
+    ]
+}

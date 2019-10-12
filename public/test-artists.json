@@ -1,0 +1,12 @@
+{
+    "artists": [
+        {
+            "id": 1,
+            "name": "Kings of Leon"
+        },
+        {
+            "id": 2,
+            "name": "Local Natives"
+        }
+    ]
+}

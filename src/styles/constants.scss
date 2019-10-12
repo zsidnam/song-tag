@@ -5,5 +5,15 @@ $gray: rgb(94, 94, 94);
 $lightGray: rgb(134, 134, 134);
 $veryLightGray: rgb(172, 170, 170);
 $blue: rgb(17, 179, 243);
-$lightBlue: rgb(17, 235, 243);
+$lightBlue: rgb(109, 255, 255);
 $white: rgb(255, 255, 255);
+
+@mixin primaryFont {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+}
+
+// Export any variables that we want to access in jsx here
+:export {
+    blue: $blue;
+}

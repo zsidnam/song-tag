@@ -5,7 +5,7 @@ const CurrentInfo = props => {
     const { currentSong } = props;
 
     const title = (currentSong && currentSong.title) || '';
-    const artist = (currentSong && currentSong.artist) || '';
+    const artist = (currentSong && currentSong.artistName) || '';
 
     return (
         <div id={'current-info'}>

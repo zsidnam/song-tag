@@ -1,0 +1,54 @@
+@import './constants.scss';
+
+div.summary {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0px 60px 0px;
+
+    img {
+        max-width: 350px;
+    }
+
+    button {
+        margin: 25px 0px;
+        background-color: $blue;
+        color: $white;
+        height: 35px;
+        width: 80px;
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+        @include primaryFont;
+
+        &:active,
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background-color: $lightBlue;
+        }
+    }
+}
+
+div.titles {
+    text-align: center;
+    width: 100%;
+
+    h1 {
+        color: $white;
+        font-size: 36px;
+        margin: 15px 0px;
+    }
+
+    h2 {
+        color: $veryLightGray;
+        font-size: 24px;
+        margin: 10px 0px;
+    }
+}
+
+table {
+    margin-bottom: 25px;
+}

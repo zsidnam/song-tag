@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { requestNewSong } from '../../store/actions/player-actions';
-
 const Song = props => {
     const { song } = props;
     const isCurrent = props.isCurrentSong(song.id);
@@ -13,7 +11,7 @@ const Song = props => {
     };
 
     const handleDoubleClick = () => {
-        props.dispatch(requestNewSong(song));
+        props.playSong(song);
     };
 
     const handleDragover = e => {
@@ -33,9 +31,8 @@ const Song = props => {
             }}
         >
             <td>{song.title}</td>
-            <td>{song.artist}</td>
-            <td>{song.album}</td>
-            <td>{song.genre}</td>
+            <td>{song.artistName}</td>
+            <td>{song.albumTitle}</td>
             <td>{song.time}</td>
         </tr>
     );
@@ -44,13 +41,12 @@ const Song = props => {
 Song.propTypes = {
     song: PropTypes.shape({
         title: PropTypes.string,
-        artist: PropTypes.string,
-        album: PropTypes.string,
-        genre: PropTypes.string,
+        artistName: PropTypes.string,
+        albumTitle: PropTypes.string,
         time: PropTypes.string
     }),
-    dispatch: PropTypes.func,
-    isCurrentSong: PropTypes.func
+    isCurrentSong: PropTypes.func,
+    playSong: PropTypes.func
 };
 
 export default Song;

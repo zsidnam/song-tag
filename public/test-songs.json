@@ -1,0 +1,279 @@
+{
+    "songs": [
+        {
+            "id": 1,
+            "title": "The End",
+            "time": "4:24",
+            "trackNumber": 1,
+            "src": "/songs/come-around-sundown/the_end.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 2,
+            "title": "Radioactive",
+            "time": "3:26",
+            "trackNumber": 2,
+            "src": "/songs/come-around-sundown/radioactive.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 3,
+            "title": "Pyro",
+            "time": "4:10",
+            "trackNumber": 3,
+            "src": "/songs/come-around-sundown/pyro.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 4,
+            "title": "Mary",
+            "time": "3:25",
+            "trackNumber": 4,
+            "src": "/songs/come-around-sundown/mary.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 5,
+            "title": "The Face",
+            "time": "3:28",
+            "trackNumber": 5,
+            "src": "/songs/come-around-sundown/the_face.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 6,
+            "title": "The Immortals",
+            "time": "3:29",
+            "trackNumber": 6,
+            "src": "/songs/come-around-sundown/the_immortals.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 7,
+            "title": "Back Down South",
+            "time": "4:01",
+            "trackNumber": 7,
+            "src": "/songs/come-around-sundown/back_down_south.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 8,
+            "title": "Beach Side",
+            "time": "2:51",
+            "trackNumber": 8,
+            "src": "/songs/come-around-sundown/beach_side.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 9,
+            "title": "No Money",
+            "time": "3:05",
+            "trackNumber": 9,
+            "src": "/songs/come-around-sundown/no_money.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 10,
+            "title": "Pony Up",
+            "time": "3:04",
+            "trackNumber": 10,
+            "src": "/songs/come-around-sundown/pony_up.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 11,
+            "title": "Birthday",
+            "time": "3:15",
+            "trackNumber": 11,
+            "src": "/songs/come-around-sundown/birthday.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 12,
+            "title": "Mi Amigo",
+            "time": "4:06",
+            "trackNumber": 12,
+            "src": "/songs/come-around-sundown/mi_amigo.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 13,
+            "title": "Pickup Truck",
+            "time": "4:44",
+            "trackNumber": 13,
+            "src": "/songs/come-around-sundown/pickup_truck.m4a",
+            "artistId": 1,
+            "artistName": "Kings of Leon",
+            "albumId": 1,
+            "albumTitle": "Come Around Sundown"
+        },
+        {
+            "id": 14,
+            "title": "Wide Eyes",
+            "time": "4:26",
+            "trackNumber": 1,
+            "src": "/songs/gorilla-manor/wide_eyes.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 15,
+            "title": "Airplanes",
+            "time": "3:57",
+            "trackNumber": 2,
+            "src": "/songs/gorilla-manor/airplanes.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 16,
+            "title": "Sun Hands",
+            "time": "4:51",
+            "trackNumber": 3,
+            "src": "/songs/gorilla-manor/sun_hands.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 17,
+            "title": "World News",
+            "time": "4:29",
+            "trackNumber": 4,
+            "src": "/songs/gorilla-manor/world_news.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 18,
+            "title": "Shape Shifter",
+            "time": "5:29",
+            "trackNumber": 5,
+            "src": "/songs/gorilla-manor/shape_shifter.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 19,
+            "title": "Camera Talk",
+            "time": "3:43",
+            "trackNumber": 6,
+            "src": "/songs/gorilla-manor/camera_talk.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 20,
+            "title": "Cards & Quarters",
+            "time": "3:59",
+            "trackNumber": 7,
+            "src": "/songs/gorilla-manor/cards_and_quarters.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 21,
+            "title": "Warning Sign",
+            "time": "4:10",
+            "trackNumber": 8,
+            "src": "/songs/gorilla-manor/warning_sign.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 22,
+            "title": "Who Knows Who Cares",
+            "time": "3:53",
+            "trackNumber": 9,
+            "src": "/songs/gorilla-manor/who_knows_who_cares.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 23,
+            "title": "Cubism Dream",
+            "time": "3:59",
+            "trackNumber": 10,
+            "src": "/songs/gorilla-manor/cubism_dream.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 24,
+            "title": "Stranger Things",
+            "time": "5:45",
+            "trackNumber": 11,
+            "src": "/songs/gorilla-manor/stranger_things.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        },
+        {
+            "id": 25,
+            "title": "Sticky Thread",
+            "time": "3:48",
+            "trackNumber": 12,
+            "src": "/songs/gorilla-manor/sticky_thread.m4a",
+            "artistId": 2,
+            "artistName": "Local Natives",
+            "albumId": 2,
+            "albumTitle": "Gorilla Manor"
+        }
+    ]
+}

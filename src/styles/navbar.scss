@@ -20,5 +20,9 @@ nav {
             color: $blue;
             text-decoration: none;
         }
+
+        &:hover {
+            color: $lightBlue;
+        }
     }
 }
