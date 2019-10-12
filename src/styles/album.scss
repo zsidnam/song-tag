@@ -20,6 +20,15 @@ div.summary {
         border-radius: 100px;
         cursor: pointer;
         @include primaryFont;
+
+        &:active,
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background-color: $lightBlue;
+        }
     }
 }
 
