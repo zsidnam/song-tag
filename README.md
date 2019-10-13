@@ -1,68 +1,27 @@
+# SOUND TAG
+
+A Spotify-like audio player built on a single `<audio>` tag. Listen to songs, albums, and artists in your library and create and curate your own playlists.
+
+***Disclaimer:** This project is not at all afilliated with Spotify, nor do I own the rights to any music referenced in this project. I am a big fan and long time user of Spotify, so the design of this test project is heavily inspired by the Spotify web and desktop players. This is just a fun way for me to get better at developing applications with React and Redux.*
+
+## Overview
+
+This project is made up of two main parts: the audio player and the library manager.
+
+### Audio Player
+I implemented the audio player using a single `<audio>` tag which is accessed by a React component via a reference. I decided to build custom audio controls so that the audio player state can be managed with Redux. This means that playing, pausing, skipping, and restarting songs can be requested from anywhere in the app, whether double clicking on a song from a library view or clicking the player buttons. Using Redux also allowed me to manage a playlist and queue easily and access it from multiple parts of the app.
+
+### Library Manager
+The library manager uses React Router to easily navigate back and forth between albums, artists, and playlists. As mentioned above, because the audio player state is managed with Redux, any component can know about the current play conditions. This allows components like Album, Artist, or Playlist to display the current song, toggle play/pause controls correctly, or add music to the play queue.
+
+## Usage (Or a temporary lack thereof)
+
+This is a sandbox project to practice building applications with React and Redux, so instead of starting with a back end, I jumped right into the front end and built this with mock data and without the concept of multiple users. I am planning on going back and writing a real back end at some point. Currently, all API calls are stubbed out with mock data that references static assets I have stored locally.
+
+To save my ears and my sanity while I build this, I am testing with real songs from my own library instead of license-free music, but I cannot include those files in source code as I do not own the rights. This means that currently, you can pull this project down but you won't be able to listen to any music until you add your own test data and song files into the project.
+
+In the near future, I will spend some time gathering license-free music that I can include with test data so other people can pull this project down and start listening to some test music right away.
+
+## Notes
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

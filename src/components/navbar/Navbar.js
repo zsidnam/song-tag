@@ -7,6 +7,10 @@ const Navbar = withRouter(props => {
     return (
         <div id={'nav-container'}>
             <nav>
+                <div id={'logo-container'}>
+                    <span className={'logo'}>{'< />'}</span>
+                    <span>Song Tag</span>
+                </div>
                 <NavLink exact to={'/'} activeClassName={'active'}>
                     Home
                 </NavLink>
