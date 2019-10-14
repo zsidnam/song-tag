@@ -35,13 +35,8 @@ class Player extends React.Component {
 
         this.audioRef = React.createRef();
 
-        this.handlePlayToggle = this.handlePlayToggle.bind(this);
-        this.handleLoopToggle = this.handleLoopToggle.bind(this);
-        this.handleVolumeChange = this.handleVolumeChange.bind(this);
-        this.handleQueueToggle = this.handleQueueToggle.bind(this);
-        this.handleScanChange = this.handleScanChange.bind(this);
-        this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
+        this.handleScanChange = this.handleScanChange.bind(this);
         this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
         this.handleScanHold = this.handleScanHold.bind(this);
         this.handleScanRelease = this.handleScanRelease.bind(this);
@@ -72,6 +67,8 @@ class Player extends React.Component {
         }
     }
 
+    /* PRIVATE FUNCTIONS WITH ACCESS TO AUDIO PLAYER */
+    /* --------------------------------------------- */
     _init() {
         this.audioRef.current.volume = this.props.volume;
     }
@@ -84,7 +81,7 @@ class Player extends React.Component {
 
             return await this.audioRef.current.pause();
         } catch (err) {
-            return this.props.dispatch(handlePlayError());
+            return this.props.handlePlayError();
         }
     }
 
@@ -100,14 +97,6 @@ class Player extends React.Component {
         this.audioRef.current.currentTime = this.state.playbackPosition;
     }
 
-    _getAudioSrc() {
-        return (this.props.currentSong && this.props.currentSong.src) || '';
-    }
-
-    _getAudioDuration() {
-        return (this.audioRef.current && this.audioRef.current.duration) || 0;
-    }
-
     _updatePlaybackPosition() {
         if (this.state.scanLocked) {
             return;
@@ -118,25 +107,21 @@ class Player extends React.Component {
         });
     }
 
-    handlePlayToggle() {
-        this.props.dispatch(togglePlayPause());
+    /* -------------- HELPERS ----------------*/
+    /* -------------------------------------- */
+    getAudioSrc() {
+        return (this.props.currentSong && this.props.currentSong.src) || '';
     }
 
-    handleLoopToggle() {
-        this.props.dispatch(toggleLoop());
+    getAudioDuration() {
+        return (this.audioRef.current && this.audioRef.current.duration) || 0;
     }
 
-    handleVolumeChange(e) {
-        this.props.dispatch(changeVolume(parseFloat(e.target.value)));
-    }
-
-    handleNext() {
-        this.props.dispatch(nextSong());
-    }
-
+    /* -------------- EVENT HANDLERS ----------------*/
+    /* --------------------------------------------- */
     handlePrev() {
         if (this.audioRef.current.currentTime < 3) {
-            this.props.dispatch(prevSong());
+            this.props.prevSong();
         } else {
             this._restartSong();
         }
@@ -155,12 +140,8 @@ class Player extends React.Component {
         this._setPlaybackPosition();
     }
 
-    handleTimeUpdate(e) {
+    handleTimeUpdate() {
         this.debouncedUpdatePlaybackPosition();
-    }
-
-    handleQueueToggle() {
-        this.props.dispatch(toggleQueueDisplay());
     }
 
     render() {
@@ -168,9 +149,9 @@ class Player extends React.Component {
             <Fragment>
                 <audio
                     ref={this.audioRef}
-                    src={this._getAudioSrc()}
+                    src={this.getAudioSrc()}
                     loop={this.props.loop}
-                    onEnded={this.handleNext}
+                    onEnded={this.props.nextSong}
                     onTimeUpdate={this.handleTimeUpdate}
                 />
 
@@ -181,11 +162,11 @@ class Player extends React.Component {
                     volume={this.props.volume}
                     loop={this.props.loop}
                     playbackPosition={this.state.playbackPosition}
-                    duration={this._getAudioDuration()}
-                    handlePlayToggle={this.handlePlayToggle}
-                    handleVolumeChange={this.handleVolumeChange}
-                    handleLoopToggle={this.handleLoopToggle}
-                    handleNext={this.handleNext}
+                    duration={this.getAudioDuration()}
+                    handlePlayToggle={this.props.togglePlayPause}
+                    handleVolumeChange={this.props.changeVolume}
+                    handleLoopToggle={this.props.toggleLoop}
+                    handleNext={this.props.nextSong}
                     handlePrev={this.handlePrev}
                     handleScanChange={this.handleScanChange}
                     handleScanHold={this.handleScanHold}
@@ -194,8 +175,8 @@ class Player extends React.Component {
 
                 <SecondaryControls
                     volume={this.props.volume}
-                    handleVolumeChange={this.handleVolumeChange}
-                    handleQueueToggle={this.handleQueueToggle}
+                    handleVolumeChange={this.props.changeVolume}
+                    handleQueueToggle={this.props.toggleQueueDisplay}
                     showQueue={this.props.showQueue}
                 />
             </Fragment>
@@ -203,7 +184,15 @@ class Player extends React.Component {
     }
 }
 
-// TODO: Set up map actions to props
+const mapDispatchToProps = dispatch => ({
+    togglePlayPause: () => dispatch(togglePlayPause()),
+    toggleLoop: () => dispatch(toggleLoop()),
+    nextSong: () => dispatch(nextSong()),
+    prevSong: () => dispatch(prevSong()),
+    changeVolume: e => dispatch(changeVolume(parseFloat(e.target.value))),
+    toggleQueueDisplay: () => dispatch(toggleQueueDisplay()),
+    handlePlayError: () => dispatch(handlePlayError())
+});
 
 const mapStateToProps = state => {
     const { player } = state;
@@ -219,4 +208,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Player);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Player);
