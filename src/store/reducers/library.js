@@ -1,9 +1,10 @@
 import {
     REQUEST_LIBRARY_CONTENT,
     RECEIVE_LIBRARY_CONTENT,
-    UPDATE_LIBRARY_SONGS,
     UPDATE_ALBUMS,
-    UPDATE_ALBUM
+    UPDATE_SELECTED_ALBUM,
+    UPDATE_PLAYLISTS,
+    UPDATE_SELECTED_PLAYLIST
 } from '../actions/action-types';
 
 const initLibraryState = {
@@ -12,6 +13,7 @@ const initLibraryState = {
     album: {},
     artists: [],
     playlists: [],
+    playlist: {},
     isUpdating: false
 };
 
@@ -31,14 +33,6 @@ const libraryReducer = (state = initLibraryState, action) => {
             };
         }
 
-        case UPDATE_LIBRARY_SONGS: {
-            return {
-                ...state,
-                songs: action.payload.songs,
-                isUpdating: false
-            };
-        }
-
         case UPDATE_ALBUMS: {
             return {
                 ...state,
@@ -47,10 +41,26 @@ const libraryReducer = (state = initLibraryState, action) => {
             };
         }
 
-        case UPDATE_ALBUM: {
+        case UPDATE_SELECTED_ALBUM: {
             return {
                 ...state,
                 album: action.payload.album,
+                isUpdating: false
+            };
+        }
+
+        case UPDATE_PLAYLISTS: {
+            return {
+                ...state,
+                playlists: action.payload.playlists,
+                isUpdating: false
+            };
+        }
+
+        case UPDATE_SELECTED_PLAYLIST: {
+            return {
+                ...state,
+                playlist: action.payload.playlist,
                 isUpdating: false
             };
         }

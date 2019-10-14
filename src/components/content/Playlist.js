@@ -4,26 +4,23 @@ import { connect } from 'react-redux';
 import SongTable from './SongTable';
 import Loading from '../common/Loading';
 
-import { fetchAlbum } from '../../store/actions/library-actions';
+import { fetchPlaylist } from '../../store/actions/library-actions';
 import {
     requestNewSong,
     updatePlaylist
 } from '../../store/actions/player-actions';
 
-import '../../styles/album.scss';
-
-class Album extends React.Component {
+class Playlist extends React.Component {
     constructor(props) {
         super(props);
 
         this.isCurrentSong = this.isCurrentSong.bind(this);
         this.playSong = this.playSong.bind(this);
-        this.playAlbum = this.playAlbum.bind(this);
     }
 
     componentDidMount() {
-        const albumId = parseInt(this.props.match.params.id);
-        this.props.dispatch(fetchAlbum(albumId));
+        const playlistId = parseInt(this.props.match.params.id);
+        this.props.dispatch(fetchPlaylist(playlistId));
     }
 
     isCurrentSong(songId) {
@@ -33,7 +30,7 @@ class Album extends React.Component {
 
         return (
             songId === this.props.currentSong.id &&
-            this.props.currentSong.playContext === 'album'
+            this.props.currentSong.playContext === 'playlist'
         );
     }
 
@@ -43,17 +40,17 @@ class Album extends React.Component {
 
         //TODO: Restart song if currently being played
 
-        this.props.dispatch(updatePlaylist(this.props.album.songs));
+        this.props.dispatch(updatePlaylist(this.props.playlist.songs));
         this.props.dispatch(requestNewSong(song));
     }
 
-    playAlbum() {
-        if (!(this.props.album.songs || []).length) {
+    playPlaylist() {
+        if (!(this.props.playlist.songs || []).length) {
             console.log('No songs to play for this album.');
             return;
         }
 
-        this.playSong(this.props.album.songs[0]);
+        this.playSong(this.props.playlist.songs[0]);
     }
 
     render() {
@@ -63,19 +60,9 @@ class Album extends React.Component {
 
         return (
             <Fragment>
-                <div className={'summary'}>
-                    <img
-                        src={this.props.album.artSrc}
-                        alt={`Album Art: ${this.props.album.title}`}
-                    />
-                    <div className={'titles'}>
-                        <h1>{this.props.album.title}</h1>
-                        <h2>{this.props.album.artistName}</h2>
-                        <button onClick={this.playAlbum}>PLAY</button>
-                    </div>
-                </div>
+                <div>{this.props.playlist.title}</div>
                 <SongTable
-                    songs={this.props.album.songs || []}
+                    songs={this.props.playlist.songs || []}
                     dispatch={this.props.dispatch}
                     isCurrentSong={this.isCurrentSong}
                     playSong={this.playSong}
@@ -85,10 +72,12 @@ class Album extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    album: state.library.album,
-    currentSong: state.player.currentSong,
-    isUpdating: state.library.isUpdating
-});
+const mapStateToProps = state => {
+    return {
+        playlist: state.library.playlist,
+        currentSong: state.player.currentSong,
+        isUpdating: state.library.isUpdating
+    };
+};
 
-export default connect(mapStateToProps)(Album);
+export default connect(mapStateToProps)(Playlist);

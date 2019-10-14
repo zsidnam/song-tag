@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Landing from './Landing';
 import Albums from './Albums';
 import Album from './Album';
+import Playlist from './Playlist';
 import Queue from '../queue/Queue';
 
 const Content = props => {
@@ -15,6 +16,7 @@ const Content = props => {
                     <Route exact path='/' component={Landing} />
                     <Route exact path='/albums' component={Albums} />
                     <Route exact path='/albums/:id' component={Album} />
+                    <Route exact path='/playlists/:id' component={Playlist} />
                 </Switch>
             </section>
             {props.showQueue && <Queue />}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import '../../styles/album-table-item.scss';
 
-const Album = props => {
+const AlbumTableItem = props => {
     const { album } = props;
     return (
         <div className={'album'}>
@@ -17,14 +17,14 @@ const Album = props => {
     );
 };
 
-Album.propTypes = {
+AlbumTableItem.propTypes = {
     album: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        artistId: PropTypes.number.isRequired,
-        artistName: PropTypes.string.isRequired,
-        artSrc: PropTypes.string.isRequired
-    })
+        id: PropTypes.number,
+        title: PropTypes.string,
+        artistId: PropTypes.number,
+        artistName: PropTypes.string,
+        artSrc: PropTypes.string
+    }).isRequired
 };
 
-export default Album;
+export default AlbumTableItem;

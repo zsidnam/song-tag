@@ -1,0 +1,40 @@
+{
+    "playlistSongs": [
+        {
+            "id": 1,
+            "playlistId": 1,
+            "songId": 1,
+            "playlistTrackNumber": 1
+        },
+        {
+            "id": 2,
+            "playlistId": 1,
+            "songId": 14,
+            "playlistTrackNumber": 2
+        },
+        {
+            "id": 3,
+            "playlistId": 1,
+            "songId": 21,
+            "playlistTrackNumber": 3
+        },
+        {
+            "id": 4,
+            "playlistId": 2,
+            "songId": 3,
+            "playlistTrackNumber": 1
+        },
+        {
+            "id": 5,
+            "playlistId": 2,
+            "songId": 6,
+            "playlistTrackNumber": 2
+        },
+        {
+            "id": 6,
+            "playlistId": 2,
+            "songId": 22,
+            "playlistTrackNumber": 3
+        }
+    ]
+}

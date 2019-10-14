@@ -10,19 +10,18 @@ nav {
     height: 100%;
 
     a {
-        color: $white;
+        color: $veryLightGray;
         font-weight: bold;
         text-transform: uppercase;
-        text-decoration: underline;
+        text-decoration: none;
         margin-top: 15px;
 
         &.active {
-            color: $blue;
-            text-decoration: none;
+            color: $white;
         }
 
         &:hover {
-            color: $lightBlue;
+            color: $blue;
         }
     }
 }
