@@ -1,4 +1,4 @@
-# SOUND TAG
+# SONG TAG
 
 A Spotify-like audio player built on a single `<audio>` tag. Listen to songs, albums, and artists in your library and create and curate your own playlists.
 
