@@ -22,6 +22,16 @@ class Album extends React.Component {
     }
 
     componentDidMount() {
+        this._loadAlbum();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this._loadAlbum();
+        }
+    }
+
+    _loadAlbum() {
         const albumId = parseInt(this.props.match.params.id);
         this.props.dispatch(fetchAlbum(albumId));
     }

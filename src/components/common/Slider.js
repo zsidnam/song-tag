@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/slider.scss';
+import styles from '../../styles/slider.module.scss';
 
 const Slider = props => {
     const { value, min, max, step } = props;
 
     return (
         <input
-            className={'slider'}
+            className={styles.slider}
             onChange={props.onChange}
             type={'range'}
             value={value}

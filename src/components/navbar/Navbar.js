@@ -1,14 +1,16 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import '../../styles/navbar.scss';
+import PlaylistNav from './PlaylistNav';
 
-const Navbar = withRouter(props => {
+import styles from '../../styles/navbar.module.scss';
+
+const Navbar = () => {
     return (
         <div id={'nav-container'}>
-            <nav>
-                <div id={'logo-container'}>
-                    <span className={'logo'}>{'< />'}</span>
+            <nav className={styles.navBar}>
+                <div className={styles.logoContainer}>
+                    <span className={styles.logo}>{'< />'}</span>
                     <span>Song Tag</span>
                 </div>
                 <NavLink exact to={'/'} activeClassName={'active'}>
@@ -17,12 +19,10 @@ const Navbar = withRouter(props => {
                 <NavLink exact to={'/albums'} activeClassName={'active'}>
                     Albums
                 </NavLink>
-                <NavLink exact to={'/playlists'} activeClassName={'active'}>
-                    Playlists
-                </NavLink>
+                <PlaylistNav />
             </nav>
         </div>
     );
-});
+};
 
 export default Navbar;

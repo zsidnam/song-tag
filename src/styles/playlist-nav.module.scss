@@ -1,0 +1,10 @@
+@import './config/constants.scss';
+
+.container {
+    h1 {
+        font-size: 16px;
+        margin-top: 25px;
+        color: $veryLightGray;
+        text-transform: uppercase;
+    }
+}

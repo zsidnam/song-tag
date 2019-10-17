@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
-import styles from '../../styles/constants.scss';
+import styles from '../../styles/config/constants.scss';
 
 const Loading = props => (
     <div className={'center-container'}>

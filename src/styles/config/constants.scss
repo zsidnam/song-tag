@@ -1,3 +1,4 @@
+// COLORS
 $black: rgb(0, 0, 0);
 $darkGray: rgb(51, 51, 51);
 $nearBlack: rgba($darkGray, 0.4);
@@ -8,6 +9,7 @@ $blue: rgb(17, 179, 243);
 $lightBlue: rgb(109, 255, 255);
 $white: rgb(255, 255, 255);
 
+// TYPOGRAPHY
 @mixin primaryFont {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
         'Lucida Sans', Arial, sans-serif;

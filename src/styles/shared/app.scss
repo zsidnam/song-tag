@@ -1,4 +1,6 @@
-@import './constants.scss';
+@import '../config/constants.scss';
+
+@import './_layout.scss';
 
 .center-container {
     display: flex;

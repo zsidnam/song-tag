@@ -19,6 +19,16 @@ class Playlist extends React.Component {
     }
 
     componentDidMount() {
+        this._loadPlaylist();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this._loadPlaylist();
+        }
+    }
+
+    _loadPlaylist() {
         const playlistId = parseInt(this.props.match.params.id);
         this.props.dispatch(fetchPlaylist(playlistId));
     }

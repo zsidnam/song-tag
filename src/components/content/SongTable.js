@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Song from './Song';
-import '../../styles/song-table.scss';
+
+import styles from '../../styles/song-table.module.scss';
 
 const SongTable = props => {
     return (
-        <table>
+        <table className={styles.songTable}>
             <thead>
                 <tr>
                     <th>Title</th>

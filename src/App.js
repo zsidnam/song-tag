@@ -7,8 +7,7 @@ import Content from './components/content/Content';
 import Navbar from './components/navbar/Navbar';
 import Player from './components/player/Player';
 
-import './styles/common.scss';
-import './styles/layout.scss';
+import './styles/shared/app.scss';
 
 function App() {
     return (

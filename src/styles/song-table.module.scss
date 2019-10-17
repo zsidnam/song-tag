@@ -1,6 +1,6 @@
-@import './constants.scss';
+@import './config/constants.scss';
 
-table {
+.songTable {
     width: 100%;
     border-collapse: collapse;
     color: $white;

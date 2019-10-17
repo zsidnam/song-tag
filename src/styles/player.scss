@@ -1,4 +1,4 @@
-@import './constants.scss';
+@import './config/constants.scss';
 
 div#player-container {
     background-color: $darkGray;
@@ -11,12 +11,21 @@ div#player-container {
     div#current-info {
         flex: 1;
         color: $white;
+        display: flex;
+        align-items: center;
 
-        p {
-            margin: 8px 0px;
+        img {
+            max-width: 70px;
+            margin-right: 20px;
+        }
 
-            &.artist {
-                color: $veryLightGray;
+        div#track-info {
+            p {
+                margin: 8px 0px;
+
+                &.artist {
+                    color: $veryLightGray;
+                }
             }
         }
     }
