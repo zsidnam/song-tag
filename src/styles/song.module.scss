@@ -1,0 +1,19 @@
+@import './config/constants.scss';
+
+.song {
+    cursor: pointer;
+    border-top: 2px solid $darkGray;
+    border-bottom: 2px solid $darkGray;
+
+    &:hover {
+        background-color: $darkGray;
+    }
+
+    td {
+        height: 35px;
+    }
+
+    &.current {
+        color: $blue;
+    }
+}

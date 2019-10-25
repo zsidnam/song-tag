@@ -15,24 +15,4 @@
             }
         }
     }
-
-    tbody {
-        tr {
-            cursor: pointer;
-            border-top: 2px solid $darkGray;
-            border-bottom: 2px solid $darkGray;
-
-            &.current {
-                color: $blue;
-            }
-
-            &:hover {
-                background-color: $darkGray;
-            }
-
-            td {
-                height: 35px;
-            }
-        }
-    }
 }
